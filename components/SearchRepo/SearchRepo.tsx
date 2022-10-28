@@ -42,7 +42,7 @@ export default function SearchRepo({ repos, setRepos }: ISearchRepo) {
         sx={{
           width: '50%'
         }}
-        label={'Buscar en los repositorios'}
+        label={'Buscar repositorio'}
         value={search}
         variant="standard"
       />
