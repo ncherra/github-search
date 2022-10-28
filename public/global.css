@@ -4,6 +4,7 @@
     scroll-behavior: smooth;
     caret-color: rgb(150, 146, 146);
     cursor: none !important;
+    overflow-x: hidden !important;
 }
 body{
      background-color: #232021; 

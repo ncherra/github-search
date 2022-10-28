@@ -49,117 +49,119 @@ export default function UserGithub(props: Props) {
   }, []);
 
   return (
-    <motion.div>
-      <CardActionArea
-        onClick={(e: any) => {
-          router.push({
-            pathname: '/repositories',
-            query: { username: profile.login }
-          });
-          e.stopPropagation();
-        }}
-      >
-        <CardMedia
-          component="img"
-          image={profile?.avatar_url}
-          sx={{ borderRadius: '50%', width: '20em', margin: 'auto' }}
-        />
-        <CardContent>
-          <div style={{ textAlign: 'center' }}>
-            <Button sx={{ margin: 'auto' }}>
+    <CardActionArea
+      onClick={(e: any) => {
+        router.push({
+          pathname: '/repositories',
+          query: { username: profile.login }
+        });
+        e.stopPropagation();
+      }}
+    >
+      <CardMedia
+        component="img"
+        image={profile?.avatar_url}
+        sx={{ borderRadius: '50%', width: '20em', margin: 'auto' }}
+      />
+      <CardContent>
+        <div style={{ textAlign: 'center' }}>
+          <Button sx={{ margin: 'auto' }}>
+            <Typography
+              gutterBottom
+              variant="h6"
+              component="div"
+              sx={{ textAlign: 'center' }}
+              onClick={() => (window.location.href = profile.html_url)}
+            >
+              {profile?.login}
+            </Typography>
+          </Button>
+        </div>
+        {User?.data && (
+          <div
+            style={{
+              margin: 'auto'
+            }}
+          >
+            <Typography
+              variant="h5"
+              color="text.secondary"
+              sx={{ textAlign: 'center' }}
+            >
+              {User?.data.name}
+            </Typography>
+            {User?.data.bio && (
               <Typography
-                gutterBottom
-                variant="h6"
-                component="div"
-                sx={{ textAlign: 'center' }}
-                onClick={() => (window.location.href = profile.html_url)}
-              >
-                {profile?.login}
-              </Typography>
-            </Button>
-          </div>
-          {User?.data && (
-            <div style={{ margin: 'auto' }}>
-              <Typography
-                variant="h5"
+                variant="body2"
                 color="text.secondary"
-                sx={{ textAlign: 'center' }}
+                sx={{
+                  margin: 'auto',
+                  textAlign: 'center',
+                  marginTop: '0.5em'
+                }}
               >
-                {User?.data.name}
+                {User?.data.bio}
               </Typography>
-              {User?.data.bio && (
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{
-                    margin: 'auto',
-                    textAlign: 'center',
-                    marginTop: '0.5em'
-                  }}
-                >
-                  {User?.data.bio}
+            )}
+            <Container
+              sx={{
+                display: 'inline-block',
+                margin: 'auto',
+                position: 'relative',
+                left: isMobile ? '' : '44%',
+                marginTop: '0.2em',
+                width: isMobile ? '60%' : '40%'
+              }}
+              style={{ padding: 0 }}
+            >
+              {User?.data.location && (
+                <Typography variant="body2" color="text.secondary">
+                  <IconUser icon={RoomIcon} />
+                  {User?.data.location}
                 </Typography>
               )}
-              <Container
-                sx={{
-                  display: 'inline-block',
-                  margin: 'auto',
-                  position: 'relative',
-                  left: isMobile ? '' : '44%',
-                  marginTop: '0.2em'
-                }}
-                style={{ padding: 0 }}
-              >
-                {User?.data.location && (
-                  <Typography variant="body2" color="text.secondary">
-                    <IconUser icon={RoomIcon} />
-                    {User?.data.location}
-                  </Typography>
-                )}
-                {User?.data.email && (
-                  <Typography variant="body2" color="text.secondary">
-                    <IconUser icon={EmailIcon} />
-                    {User?.data.email}
-                  </Typography>
-                )}
-                {User?.data.blog && (
-                  <Typography variant="body2" color="text.secondary">
-                    <IconUser icon={LanguageIcon} />
-                    {User?.data.blog}
-                  </Typography>
-                )}
-                {User?.data.twitter_username && (
-                  <Typography variant="body2" color="text.secondary">
-                    <IconUser icon={TwitterIcon} />@
-                    {User?.data.twitter_username}
-                  </Typography>
-                )}
+              {User?.data.email && (
                 <Typography variant="body2" color="text.secondary">
-                  <IconUser icon={GroupsIcon} />
-                  seguidores: {User?.data.followers}
+                  <IconUser icon={EmailIcon} />
+                  {User?.data.email}
                 </Typography>
+              )}
+              {User?.data.blog && (
                 <Typography variant="body2" color="text.secondary">
-                  <IconUser icon={PersonIcon} />
-                  siguendo: {User?.data.following}
+                  <IconUser icon={LanguageIcon} />
+                  {User?.data.blog}
                 </Typography>
+              )}
+              {User?.data.twitter_username && (
+                <Typography variant="body2" color="text.secondary">
+                  <IconUser icon={TwitterIcon} />@{User?.data.twitter_username}
+                </Typography>
+              )}
+              <Typography variant="body2" color="text.secondary">
+                <IconUser icon={GroupsIcon} />
+                seguidores: {User?.data.followers}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                <IconUser icon={PersonIcon} />
+                siguendo: {User?.data.following}
+              </Typography>
 
-                {User?.data.hireable && (
-                  <Typography variant="body2" color="text.secondary">
-                    <IconUser icon={WorkIcon} />
-                    Contratable {User?.data.hireable}
-                  </Typography>
-                )}
+              {User?.data.hireable && (
                 <Typography variant="body2" color="text.secondary">
-                  <VisibilityIcon
-                    sx={{ verticalAlign: 'bottom', marginRight: '0.4em' }}
-                  />
-                  Repositorios publicos: {User?.data.public_repos}
+                  <IconUser icon={WorkIcon} />
+                  Contratable {User?.data.hireable}
                 </Typography>
-              </Container>
-            </div>
-          )}
-        </CardContent>
-      </CardActionArea>
-    </motion.div>
+              )}
+              <Typography variant="body2" color="text.secondary">
+                <VisibilityIcon
+                  sx={{ verticalAlign: 'bottom', marginRight: '0.4em' }}
+                />
+                Repositorios publicos: {User?.data.public_repos}
+              </Typography>
+            </Container>
+          </div>
+        )}
+      </CardContent>
+    </CardActionArea>
   );
 }

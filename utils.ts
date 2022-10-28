@@ -21,5 +21,10 @@ export function date(dateString: string) {
   const date = new Date(dateString);
   const mount = monthNames[date.getMonth()];
   const year = date.getFullYear();
-  return mount + ' ' + year;
+  const day = date.getDay();
+  let hour: string = date.getHours().toString();
+  let minute: string = date.getMinutes().toString();
+  if (parseInt(minute) < 10) minute = '0' + minute;
+  if (parseInt(hour) < 10) hour = '0' + minute;
+  return year + ' ' + mount + ' ' + day + '     ';
 }

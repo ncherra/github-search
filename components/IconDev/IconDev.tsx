@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import useIcon from 'services/query/api_devicon/useIcon';
 import Parse from 'html-react-parser';
-import { width } from '@mui/system';
 
 export default function IconDev({ name, style = {} }) {
   const { refetch: GetIcon, data: IconSVG, error } = useIcon(name);
@@ -27,7 +26,7 @@ export default function IconDev({ name, style = {} }) {
         width: '2em',
         marginRight: '1em',
         verticalAlign: 'bottom',
-        display: 'inline-block',
+        display: IconSVG?.data ? 'inline-block' : 'block',
         ...style
       }}
     >

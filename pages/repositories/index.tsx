@@ -7,21 +7,26 @@ import backgroundRepo from 'public/background-repo.json';
 import { motion } from 'framer-motion';
 import useUser from 'services/query/api_github/useUser';
 import UserGithub from 'components/CardUserGithub';
+import SearchRepo from 'components/SearchRepo';
+import { useState } from 'react';
 
 export default function Repositories(props) {
   const router = useRouter();
   const { username } = router.query;
-  const { data: Repos, error: errorRepo } = useRepositories(username);
-  const { data: User, error: errorUser } = useUser(username, true);
+  const [repos, setRepos] = useState([]);
+  const { data: Repos, error } = useRepositories(username, setRepos);
+  const { data: User } = useUser(username, true);
 
   return (
     <Container maxWidth={false} style={{ padding: 0 }}>
       <motion.div>
         <UserGithub profile={User?.data} buttonRepo={false} />
       </motion.div>
-      {Repos?.data.map((repo, i) => (
-        <CardRepositoryGithub repo={repo} key={'repo' + i} />
-      ))}
+      <SearchRepo repos={Repos?.data} setRepos={setRepos} />
+      {repos.length > 0 &&
+        repos?.map((repo, i) => (
+          <CardRepositoryGithub repo={repo} key={'repo' + i} />
+        ))}
       <Lottie animationData={backgroundRepo} style={{ position: 'relative' }} />
       <Lottie
         animationData={backgroundRepo}
