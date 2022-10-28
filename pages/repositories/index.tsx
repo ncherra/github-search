@@ -37,7 +37,6 @@ export default function Repositories(props) {
           transform: 'rotate(180deg)'
         }}
       />
-      <UserGithub profile={profile} />
     </Container>
   );
 }

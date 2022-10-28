@@ -19,7 +19,9 @@ export default function SearchRepo({ repos, setRepos }: ISearchRepo) {
     }
     if (copyRepos) {
       if (search.length > 1) {
-        const filter = copyRepos.filter((repo) => repo.name.includes(search));
+        const filter = copyRepos.filter((repo) =>
+          repo.name.toLowerCase().includes(search.toLowerCase())
+        );
         setRepos([...filter]);
       } else setRepos([...copyRepos]);
     }
