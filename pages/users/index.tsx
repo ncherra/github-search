@@ -4,6 +4,8 @@ import backgroundUsers from 'public/background-users.json';
 import githubIcon from 'public/github-logo.json';
 import { motion } from 'framer-motion';
 import SearchGithubUser from 'components/SearchGithubUser';
+import { profile } from 'test/data';
+import UserGithub from 'components/CardUserGithub';
 
 export default function Home() {
   const theme = useTheme();
@@ -21,7 +23,7 @@ export default function Home() {
         />
       </motion.div>
       <SearchGithubUser />
-      {/*       <UserGithub {...profile} /> */}
+      {/*     <UserGithub {...profile} /> */}
       <Lottie
         animationData={backgroundUsers}
         style={{ position: 'relative', top: '30vh' }}

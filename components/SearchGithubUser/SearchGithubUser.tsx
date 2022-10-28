@@ -25,10 +25,11 @@ export default function SearchGithubUser() {
         disablePortal
         options={Users?.data ? Users.data?.items : []}
         sx={{
-          width: { xs: '90%', ml: '70%' },
+          width: { xs: '60%', ml: '80%' },
           height: '100%',
           margin: 'auto',
           color: 'white',
+          marginTop: '0.4em',
           [`& .${autocompleteClasses.popupIndicator}`]: {
             transform: 'none'
           }

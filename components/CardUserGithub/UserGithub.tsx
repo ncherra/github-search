@@ -9,6 +9,15 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions, Container } from '@mui/material';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
+import RoomIcon from '@mui/icons-material/Room';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import GroupsIcon from '@mui/icons-material/Groups';
+import LanguageIcon from '@mui/icons-material/Language';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import PersonIcon from '@mui/icons-material/Person';
+import EmailIcon from '@mui/icons-material/Email';
+import WorkIcon from '@mui/icons-material/Work';
+import IconUser from './Icon';
 
 const Name = styled.p`
   font-size: 3em;
@@ -45,50 +54,85 @@ export default function UserGithub(profile: any) {
             >
               {profile.login}
             </Typography>
-            <Typography
-              variant="h5"
-              color="text.secondary"
-              sx={{ textAlign: 'center' }}
-            >
-              {User?.data.name}
-            </Typography>
-            {User?.data.email && (
-              <Typography variant="body2" color="text.secondary">
-                Email: {User?.data.email}
-              </Typography>
+            {User?.data && (
+              <div style={{ margin: 'auto' }}>
+                <Typography
+                  variant="h5"
+                  color="text.secondary"
+                  sx={{ textAlign: 'center' }}
+                >
+                  {User?.data.name}
+                </Typography>
+                {User?.data.bio && (
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      margin: 'auto',
+                      textAlign: 'center',
+                      marginTop: '0.5em'
+                    }}
+                  >
+                    {User?.data.bio}
+                  </Typography>
+                )}
+                <div
+                  style={{
+                    display: 'inline-block',
+                    margin: 'auto',
+                    position: 'relative',
+                    left: '43%',
+                    marginTop: '0.2em'
+                  }}
+                >
+                  {User?.data.location && (
+                    <Typography variant="body2" color="text.secondary">
+                      <IconUser icon={RoomIcon} />
+                      {User?.data.location}
+                    </Typography>
+                  )}
+                  {User?.data.email && (
+                    <Typography variant="body2" color="text.secondary">
+                      <IconUser icon={EmailIcon} />
+                      {User?.data.email}
+                    </Typography>
+                  )}
+                  {User?.data.blog && (
+                    <Typography variant="body2" color="text.secondary">
+                      <IconUser icon={LanguageIcon} />
+                      {User?.data.blog}
+                    </Typography>
+                  )}
+                  {User?.data.twitter_username && (
+                    <Typography variant="body2" color="text.secondary">
+                      <IconUser icon={TwitterIcon} />@
+                      {User?.data.twitter_username}
+                    </Typography>
+                  )}
+                  <Typography variant="body2" color="text.secondary">
+                    <IconUser icon={GroupsIcon} />
+                    seguidores: {User?.data.followers}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    <IconUser icon={PersonIcon} />
+                    siguendo: {User?.data.following}
+                  </Typography>
+
+                  {User?.data.hireable && (
+                    <Typography variant="body2" color="text.secondary">
+                      <IconUser icon={WorkIcon} />
+                      Contratable {User?.data.hireable}
+                    </Typography>
+                  )}
+                  <Typography variant="body2" color="text.secondary">
+                    <VisibilityIcon
+                      sx={{ verticalAlign: 'bottom', marginRight: '0.4em' }}
+                    />
+                    Repositorios publicos: {User?.data.public_repos}
+                  </Typography>
+                </div>
+              </div>
             )}
-            {User?.data.blog && (
-              <Typography variant="body2" color="text.secondary">
-                Blog:{User?.data.blog}
-              </Typography>
-            )}
-            {User?.data.twitter_username && (
-              <Typography variant="body2" color="text.secondary">
-                Twitter:@{User?.data.twitter_username}
-              </Typography>
-            )}
-            {User?.data.location && (
-              <Typography variant="body2" color="text.secondary">
-                Lugar: {User?.data.location}
-              </Typography>
-            )}
-            <Typography variant="body2" color="text.secondary">
-              seguidores: {User?.data.followers}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              siguendo: {User?.data.following}
-            </Typography>
-            {User?.data.bio && (
-              <Typography variant="body2" color="text.secondary">
-                Biografia: {User?.data.bio}
-              </Typography>
-            )}
-            <Typography variant="body2" color="text.secondary">
-              Contratable: {User?.data.hireable}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Repositorios publicos: {User?.data.public_repos}
-            </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
@@ -111,7 +155,7 @@ export default function UserGithub(profile: any) {
                 e.stopPropagation();
               }}
             >
-              ver repositorios pubilcos
+              ver repositorios públicos
             </Button>
           )}
           {/*         <IconDev name={'f#'} /> */}

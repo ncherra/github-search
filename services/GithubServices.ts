@@ -26,7 +26,12 @@ class GithubServices {
     return await axiosGithub.get(`repos/${username}/${repo_name}/languages`);
   }
 }
-const axiosGithub = axios.create({ baseURL: 'https://api.github.com/' });
+const axiosGithub = axios.create({
+  baseURL: 'https://api.github.com/',
+  headers: {
+    Authorization: 'Bearer  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'
+  }
+});
 const githubServices = new GithubServices(axiosGithub);
 
 export default githubServices;

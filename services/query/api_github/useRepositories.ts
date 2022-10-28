@@ -1,17 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import githubServices from '../../GithubServices';
 
-export default function useRepositories(username, setOwner) {
+export default function useRepositories(username) {
   const query = useQuery(
     ['REPOS' + username],
     () => githubServices.getReposByUsername(username),
     {
       refetchOnWindowFocus: false,
-      staleTime: 10000,
-      onSuccess: (res) => {
-        if (Array.isArray(res.data) && res.data?.length > 0)
-          setOwner(res.data[0].owner);
-      }
+      staleTime: 10000
     }
   );
   return query;

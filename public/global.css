@@ -14,8 +14,8 @@ body{
 }
 .cursor {
   background-color: #FE8E3A;
-  height: 32px;
-  width: 32px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
   position: fixed;
   top: 0;
