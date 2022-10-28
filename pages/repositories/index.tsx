@@ -16,16 +16,12 @@ export default function Repositories(props) {
 
   return (
     <Container maxWidth={false} style={{ padding: 0 }}>
-      {errorUser !== null && (
-        <motion.div>
-          <UserGithub profile={User?.data} buttonRepo={false} />
-        </motion.div>
-      )}
-      {errorRepo !== null &&
-        Repos?.data.map((repo, i) => (
-          <CardRepositoryGithub repo={repo} key={'repo' + i} />
-        ))}
-      {errorUser !== null && alert('Limite alcanzado de la Api de Github')}
+      <motion.div>
+        <UserGithub profile={User?.data} buttonRepo={false} />
+      </motion.div>
+      {Repos?.data.map((repo, i) => (
+        <CardRepositoryGithub repo={repo} key={'repo' + i} />
+      ))}
       <Lottie animationData={backgroundRepo} style={{ position: 'relative' }} />
       <Lottie
         animationData={backgroundRepo}

@@ -33,7 +33,7 @@ export default function Home() {
             margin: 'auto',
             textAlign: 'center',
             position: 'absolute',
-            top: '74%',
+            top: '80%',
             left: '45%',
             zIndex: -1,
             fontFamily: 'cursive'

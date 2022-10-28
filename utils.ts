@@ -20,6 +20,6 @@ export function wait(ms) {
 export function date(dateString: string) {
   const date = new Date(dateString);
   const mount = monthNames[date.getMonth()];
-  const year = monthNames[date.getFullYear()];
+  const year = date.getFullYear();
   return mount + ' ' + year;
 }

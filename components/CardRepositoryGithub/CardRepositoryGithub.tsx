@@ -33,7 +33,7 @@ export default function CardRepositoryGithub(props) {
             {repo?.description}
           </Typography>
           <Typography key={'update'} variant="body2" color="text.secondary">
-            {repo?.pushed_at && date(repo?.pushed_at)}
+            Updated {repo?.pushed_at && date(repo?.pushed_at)}
           </Typography>
         </CardActionArea>
       </Container>

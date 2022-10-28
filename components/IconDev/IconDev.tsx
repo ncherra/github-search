@@ -27,7 +27,8 @@ export default function IconDev({ name, style = {} }) {
         width: '2em',
         marginRight: '1em',
         verticalAlign: 'bottom',
-        display: error !== null ? 'inline-block' : 'block'
+        display: 'inline-block',
+        ...style
       }}
     >
       {error === null && IconSVG?.data && <Icon />}
