@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material';
+import { text } from 'node:stream/consumers';
 
 const theme = {
   /*   typography: {
@@ -30,6 +31,14 @@ export const themeLight = createTheme({
 
 export const themeDark = createTheme({
   palette: {
-    mode: 'dark'
+    mode: 'dark',
+    text: {
+      primary: '#39A6FF'
+    }
+  },
+  typography: {
+    button: {
+      textTransform: 'none'
+    }
   }
 });

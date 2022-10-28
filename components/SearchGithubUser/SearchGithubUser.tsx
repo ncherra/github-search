@@ -25,7 +25,7 @@ export default function SearchGithubUser() {
         disablePortal
         options={Users?.data ? Users.data?.items : []}
         sx={{
-          width: { xs: '70%', ml: '70%' },
+          width: { xs: '90%', sm: '68%' },
           height: '100%',
           margin: 'auto',
           color: 'white',
@@ -52,7 +52,9 @@ export default function SearchGithubUser() {
         onFocus={() => {
           window.scrollTo(0, 400);
         }}
-        renderOption={(params, option) => <UserGithub {...option} />}
+        renderOption={(params, option: Api_Github_Search_User) => (
+          <UserGithub profile={{ ...option }} />
+        )}
         renderInput={(params) => <TextField {...params} label="Github Users" />}
       />
     </div>

@@ -3,8 +3,8 @@ import useIcon from 'services/query/api_devicon/useIcon';
 import Parse from 'html-react-parser';
 import { width } from '@mui/system';
 
-export default function IconDev({ name }) {
-  const { refetch: GetIcon, data: IconSVG } = useIcon(name);
+export default function IconDev({ name, style = {} }) {
+  const { refetch: GetIcon, data: IconSVG, error } = useIcon(name);
 
   useEffect(() => {
     setTimeout(() => {
@@ -22,8 +22,15 @@ export default function IconDev({ name }) {
   }
 
   return (
-    <div style={{ width: '3em' }}>
-      <Icon />
+    <div
+      style={{
+        width: '2em',
+        marginRight: '1em',
+        verticalAlign: 'bottom',
+        display: error !== null ? 'inline-block' : 'block'
+      }}
+    >
+      {error === null && IconSVG?.data && <Icon />}
     </div>
   );
 }

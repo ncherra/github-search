@@ -16,10 +16,11 @@ class GithubServices {
   }
 
   async getUser(params): Promise<any> {
-    return await axiosGithub.get('users/' + params);
+    if (params !== undefined) return await axiosGithub.get('users/' + params);
   }
   async getReposByUsername(username) {
-    return await axiosGithub.get(`users/${username}/repos`);
+    if (username !== undefined)
+      return await axiosGithub.get(`users/${username}/repos`);
   }
 
   async getLanguagesByRepo(username, repo_name) {

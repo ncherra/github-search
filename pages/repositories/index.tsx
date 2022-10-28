@@ -5,7 +5,6 @@ import CardRepositoryGithub from 'components/CardRepositoryGithub';
 import useRepositories from 'services/query/api_github/useRepositories';
 import Lottie from 'lottie-react';
 import backgroundRepo from 'public/background-repo.json';
-import { repos as Repos } from 'test/data';
 import { motion, MotionConfig } from 'framer-motion';
 import useUser from 'services/query/api_github/useUser';
 import UserGithub from 'components/CardUserGithub';
@@ -18,18 +17,21 @@ export default function Repositories(props) {
 
   return (
     <Container maxWidth={false} style={{ padding: 0 }}>
-      <motion.div
-      /* initial={{ y: 1000 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 1 }}
-        style={{ margin: 'auto', textAlign: '-webkit-center' }} */
-      >
-        <UserGithub {...User?.data} />
+      <motion.div>
+        <UserGithub profile={User?.data} buttonRepo={false} />
       </motion.div>
       {Repos?.data.map((repo, i) => (
         <CardRepositoryGithub repo={repo} key={'repo' + i} />
       ))}
       <Lottie animationData={backgroundRepo} style={{ position: 'relative' }} />
+      <Lottie
+        animationData={backgroundRepo}
+        style={{
+          position: 'relative',
+          top: '-1em',
+          transform: 'rotate(180deg)'
+        }}
+      />
     </Container>
   );
 }

@@ -9,7 +9,7 @@ import UserGithub from 'components/CardUserGithub';
 
 export default function Home() {
   const theme = useTheme();
-  const esMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Container maxWidth={false} style={{ padding: 0 }}>
@@ -17,7 +17,7 @@ export default function Home() {
         <Lottie
           animationData={githubIcon}
           style={{
-            width: esMobile ? '10em' : '30em',
+            width: isMobile ? '10em' : '30em',
             margin: 'auto'
           }}
         />
