@@ -9,6 +9,7 @@ import useUser from 'services/query/api_github/useUser';
 import UserGithub from 'components/CardUserGithub';
 import SearchRepo from 'components/SearchRepo';
 import { useState } from 'react';
+import { profile } from 'test/data';
 
 export default function Repositories(props) {
   const router = useRouter();
@@ -20,7 +21,7 @@ export default function Repositories(props) {
   return (
     <Container maxWidth={false} style={{ padding: 0 }}>
       <motion.div>
-        <UserGithub profile={User?.data} buttonRepo={false} />
+        <UserGithub profile={User?.data} />
       </motion.div>
       <SearchRepo repos={Repos?.data} setRepos={setRepos} />
       {repos.length > 0 &&
@@ -36,6 +37,7 @@ export default function Repositories(props) {
           transform: 'rotate(180deg)'
         }}
       />
+      <UserGithub profile={profile} />
     </Container>
   );
 }

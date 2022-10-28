@@ -4073,7 +4073,7 @@ export const repos: Api_Github_Repo[] = [
   }
 ];
 
-export const User2: { data: Api_Github_User } = {
+export const User: { data: Api_Github_User } = {
   data: {
     login: 'ncherra',
     id: 59145274,

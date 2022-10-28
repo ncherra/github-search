@@ -1,15 +1,12 @@
 import { useEffect } from 'react';
-import styled from 'styled-components';
 import useUser from 'services/query/api_github/useUser';
 import * as React from 'react';
-import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import {
   Button,
   CardActionArea,
-  CardActions,
   Container,
   useMediaQuery,
   useTheme
@@ -27,18 +24,12 @@ import WorkIcon from '@mui/icons-material/Work';
 import IconUser from './Icon';
 import { Api_Github_Search_User } from 'types';
 
-const Name = styled.p`
-  font-size: 3em;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-`;
 interface Props {
   profile: Api_Github_Search_User;
-  buttonRepo?: boolean;
 }
 
 export default function UserGithub(props: Props) {
-  const { buttonRepo = true, profile } = props;
+  const { profile } = props;
   const { data: User, refetch } = useUser(profile?.login);
   const router = useRouter();
   const theme = useTheme();
@@ -110,7 +101,7 @@ export default function UserGithub(props: Props) {
                 position: 'relative',
                 left: isMobile ? '' : '44%',
                 marginTop: '0.2em',
-                width: isMobile ? '60%' : '40%'
+                width: isMobile ? '70%' : '40%'
               }}
               style={{ padding: 0 }}
             >
