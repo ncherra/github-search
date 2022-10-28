@@ -27,10 +27,7 @@ class GithubServices {
   }
 }
 const axiosGithub = axios.create({
-  baseURL: 'https://api.github.com/',
-  headers: {
-    Authorization: 'Bearer  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'
-  }
+  baseURL: 'https://api.github.com/'
 });
 const githubServices = new GithubServices(axiosGithub);
 

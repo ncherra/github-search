@@ -25,7 +25,7 @@ export default function SearchGithubUser() {
         disablePortal
         options={Users?.data ? Users.data?.items : []}
         sx={{
-          width: { xs: '60%', ml: '80%' },
+          width: { xs: '70%', ml: '70%' },
           height: '100%',
           margin: 'auto',
           color: 'white',
