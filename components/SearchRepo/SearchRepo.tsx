@@ -42,6 +42,7 @@ export default function SearchRepo({ repos, setRepos }: ISearchRepo) {
         }}
         label={'Buscar en los repositorios'}
         value={search}
+        variant="standard"
       />
     </Container>
   );

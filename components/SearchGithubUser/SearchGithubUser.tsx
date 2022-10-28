@@ -55,7 +55,9 @@ export default function SearchGithubUser() {
         renderOption={(params, option: Api_Github_Search_User) => (
           <UserGithub profile={{ ...option }} />
         )}
-        renderInput={(params) => <TextField {...params} label="Github Users" />}
+        renderInput={(params) => (
+          <TextField {...params} label="Github Users" variant="standard" />
+        )}
       />
     </div>
   );
