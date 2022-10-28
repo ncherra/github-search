@@ -3,8 +3,11 @@ import githubServices from '../../GithubServices';
 
 export default function useLanguagesByRepo(username, repo_name) {
   const query = useQuery(
-    ['LanguagesByRepo'],
-    () => githubServices.getLanguagesByRepo(username, repo_name),
+    ['LanguagesByRepo' + repo_name],
+    async () =>
+      Object.keys(
+        (await githubServices.getLanguagesByRepo(username, repo_name)).data
+      ),
     {
       refetchOnWindowFocus: false,
       cacheTime: 1

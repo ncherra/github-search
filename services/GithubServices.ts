@@ -30,9 +30,3 @@ const axiosGithub = axios.create({ baseURL: 'https://api.github.com/' });
 const githubServices = new GithubServices(axiosGithub);
 
 export default githubServices;
-
-class Cliente {
-  numero_celular = 32323232323;
-  direccion_domicilio = 'Montevideo';
-  plataQueMeDebe = 20000;
-}

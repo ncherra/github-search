@@ -2,8 +2,24 @@
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    caret-color: rgb(150, 146, 146);
+    cursor: none !important;
 }
 body{
      background-color: #232021; 
-/*   overflow: hidden;  */
+}
+::selection {
+  color: rgb(60, 60, 69);
+  background: rgb(186, 176, 176);
+}
+.cursor {
+  background-color: #FE8E3A;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 100000000;
 }

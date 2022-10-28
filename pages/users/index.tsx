@@ -10,7 +10,7 @@ export default function Home() {
   const esMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Container maxWidth={false}>
+    <Container maxWidth={false} style={{ padding: 0 }}>
       <motion.div>
         <Lottie
           animationData={githubIcon}

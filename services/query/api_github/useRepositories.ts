@@ -3,7 +3,7 @@ import githubServices from '../../GithubServices';
 
 export default function useRepositories(username, setOwner) {
   const query = useQuery(
-    ['REPOS'],
+    ['REPOS' + username],
     () => githubServices.getReposByUsername(username),
     {
       refetchOnWindowFocus: false,

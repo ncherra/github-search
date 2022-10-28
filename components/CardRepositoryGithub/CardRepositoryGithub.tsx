@@ -9,12 +9,10 @@ export default function CardRepositoryGithub(props) {
     repo.owner.login,
     repo.name
   );
-  console.log(repo.name, languages);
-
   useEffect(() => {
-    setTimeout(() => {
+    /*  setTimeout(() => {
       GetLanguages();
-    }, 200);
+    }, 200); */
   }, []);
 
   return (
@@ -40,20 +38,7 @@ export default function CardRepositoryGithub(props) {
       <Button onClick={() => (window.location.href = repo?.downloads_url)}>
         Descargar
       </Button>
-      {languages?.data.length > 0 &&
-        languages.data.map((v) => <IconDev name={v} />)}
-      <div>
-        {languages?.data.length > 0 &&
-          languages.data?.map((v) => (
-            <Typography
-              sx={{ display: 'inline' }}
-              variant="body2"
-              color="text.secondary"
-            >
-              {v + ' '}
-            </Typography>
-          ))}
-      </div>
+      <IconDev name={repo.language} />
     </Container>
   );
 }

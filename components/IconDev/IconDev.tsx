@@ -6,7 +6,6 @@ export default function IconDev({ name }) {
   const { refetch: GetIcon, data: IconSVG } = useIcon(name);
 
   useEffect(() => {
-    console.log(name);
     setTimeout(() => {
       GetIcon();
     }, 500);

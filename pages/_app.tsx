@@ -1,6 +1,12 @@
 import type { AppProps } from 'next/app';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Container, GlobalStyles, ThemeProvider } from '@mui/material';
+import {
+  Container,
+  GlobalStyles,
+  ThemeProvider,
+  useMediaQuery,
+  useTheme
+} from '@mui/material';
 import { themeDark } from 'Theme';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
@@ -10,11 +16,14 @@ import { motion } from 'framer-motion';
 import darkScrollbar from '@mui/material/darkScrollbar';
 import '../public/global.css';
 import Head from 'next/head';
+import Cursor from 'components/Cursor';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const theme = useTheme();
+  const inMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
     const handleStart = (url) => {
@@ -61,6 +70,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               <title>Github Search</title>
               <link rel="icon" href="/favicon.ico" />
             </Head>
+            {!inMobile && <Cursor />}
             <Component {...pageProps} />
             <GlobalStyles styles={{ ...darkScrollbar() }} />
           </motion.div>

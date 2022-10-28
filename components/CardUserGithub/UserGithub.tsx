@@ -15,11 +15,6 @@ const Name = styled.p`
   font-family: Arial, Helvetica, sans-serif;
   color: white;
 `;
-const ContainerUserGithub = styled.div`
-  margin: auto;
-  text-align: center;
-`;
-
 interface Props {
   profile: any;
 }
@@ -29,7 +24,7 @@ export default function UserGithub(profile: any) {
   const router = useRouter();
 
   useEffect(() => {
-    setTimeout(() => refetch(), 500);
+    refetch();
   }, []);
 
   return (
@@ -44,23 +39,27 @@ export default function UserGithub(profile: any) {
           <CardContent>
             <Typography
               gutterBottom
-              variant="h5"
+              variant="h6"
               component="div"
               sx={{ textAlign: 'center' }}
             >
               {profile.login}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography
+              variant="h5"
+              color="text.secondary"
+              sx={{ textAlign: 'center' }}
+            >
               {User?.data.name}
             </Typography>
             {User?.data.email && (
               <Typography variant="body2" color="text.secondary">
-                {User?.data.email}
+                Email: {User?.data.email}
               </Typography>
             )}
             {User?.data.blog && (
               <Typography variant="body2" color="text.secondary">
-                {User?.data.blog}
+                Blog:{User?.data.blog}
               </Typography>
             )}
             {User?.data.twitter_username && (
@@ -85,7 +84,7 @@ export default function UserGithub(profile: any) {
               </Typography>
             )}
             <Typography variant="body2" color="text.secondary">
-              hireable: {User?.data.hireable}
+              Contratable: {User?.data.hireable}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               Repositorios publicos: {User?.data.public_repos}

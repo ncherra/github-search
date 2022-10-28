@@ -4,7 +4,7 @@ import githubServices from '../../GithubServices';
 
 export default function useIcon(iconName_IT) {
   const query = useQuery(
-    ['USER'],
+    ['ICON' + iconName_IT],
     () => devIconServices.getIconSvg(iconName_IT),
     {
       enabled: false,
