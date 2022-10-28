@@ -1,11 +1,10 @@
-import { Container, useMediaQuery, useTheme } from '@mui/material';
+import { Container, Typography, useMediaQuery, useTheme } from '@mui/material';
 import Lottie from 'lottie-react';
 import backgroundUsers from 'public/background-users.json';
 import githubIcon from 'public/github-logo.json';
 import { motion } from 'framer-motion';
 import SearchGithubUser from 'components/SearchGithubUser';
-import { profile } from 'test/data';
-import UserGithub from 'components/CardUserGithub';
+import { fontFamily } from '@mui/system';
 
 export default function Home() {
   const theme = useTheme();
@@ -23,11 +22,36 @@ export default function Home() {
         />
       </motion.div>
       <SearchGithubUser />
-      {/*     <UserGithub {...profile} /> */}
       <Lottie
         animationData={backgroundUsers}
         style={{ position: 'relative', top: '30vh' }}
-      />
+      >
+        <Typography
+          color="text.secondary"
+          variant="h5"
+          sx={{
+            margin: 'auto',
+            textAlign: 'center',
+            position: 'absolute',
+            top: '74%',
+            left: '45%',
+            zIndex: -1,
+            fontFamily: 'cursive'
+          }}
+        >
+          <motion.div
+            animate={{ y: [0, -100, 0] }}
+            transition={{
+              duration: 4,
+              times: [0, 0.2, 0.5, 0.8, 1],
+              repeat: Infinity,
+              repeatDelay: 1
+            }}
+          >
+            ncherra
+          </motion.div>
+        </Typography>
+      </Lottie>
     </Container>
   );
 }
