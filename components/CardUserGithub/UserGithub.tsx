@@ -120,7 +120,11 @@ export default function UserGithub(props: Props) {
                 </Typography>
               )}
               {User?.data.blog && (
-                <Typography variant="body2" color="text.secondary">
+                <Typography
+                  variant="body2"
+                  style={{ textOverflow: 'ellipsis' }}
+                  color="text.secondary"
+                >
                   <IconUser icon={LanguageIcon} />
                   {User?.data.blog}
                 </Typography>
