@@ -38,14 +38,16 @@ export default function UserGithub(props: Props) {
   useEffect(() => {
     refetch();
   }, []);
+  console.log(router);
 
   return (
     <CardActionArea
       onClick={(e: any) => {
-        router.push({
-          pathname: '/repositories',
-          query: { username: profile.login }
-        });
+        if (router.pathname !== '/repositories')
+          router.push({
+            pathname: '/repositories',
+            query: { username: profile.login }
+          });
         e.stopPropagation();
       }}
     >

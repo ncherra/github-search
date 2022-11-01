@@ -42,6 +42,9 @@ export default function SearchRepo({ repos, setRepos }: ISearchRepo) {
         sx={{
           width: '50%'
         }}
+        onFocus={() => {
+          window.scrollTo(0, 400);
+        }}
         label={'Buscar repositorio'}
         value={search}
         variant="standard"

@@ -4,11 +4,12 @@ import backgroundUsers from 'public/background-users.json';
 import githubIcon from 'public/github-logo.json';
 import { motion } from 'framer-motion';
 import SearchGithubUser from 'components/SearchGithubUser';
-import { fontFamily } from '@mui/system';
+import { useState } from 'react';
 
 export default function Home() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const [limitApi, setLimitApi] = useState(false);
 
   return (
     <Container maxWidth={false} style={{ padding: 0 }}>
@@ -21,7 +22,8 @@ export default function Home() {
           }}
         />
       </motion.div>
-      <SearchGithubUser />
+      <SearchGithubUser setLimitApi={setLimitApi} />
+
       <Lottie
         animationData={backgroundUsers}
         style={{ position: 'relative', top: '30vh' }}

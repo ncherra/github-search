@@ -22,7 +22,6 @@ const useTimer = (props: any) => {
         if (seconds > 0) {
           setSeconds(seconds - 1);
         }
-        console.log(seconds);
         if (seconds === 0) {
           if (minutes === 0) {
             clearInterval(myInterval);

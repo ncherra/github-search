@@ -7,9 +7,12 @@ import UserGithub from '../CardUserGithub';
 import useTimer from '../../hooks/useTimer';
 import useDidMountEffect from '../../hooks/useDidMountEffect';
 
-export default function SearchGithubUser() {
+export default function SearchGithubUser({ setLimitApi }) {
   const [searchUser, setSearchUser] = useState('');
-  const { data: Users, refetch: GetUsersGithub } = useUsers(searchUser);
+  const { data: Users, refetch: GetUsersGithub } = useUsers(
+    searchUser,
+    setLimitApi
+  );
   const [setRestart] = useTimer({
     method: GetUsersGithub,
     initialSeconds: 1

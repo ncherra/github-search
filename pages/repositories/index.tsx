@@ -20,7 +20,11 @@ export default function Repositories(props) {
 
   return (
     <Container maxWidth={false} style={{ padding: 0 }}>
-      <motion.div>
+      <motion.div
+        initial={{ y: -1000 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <UserGithub profile={User?.data} />
       </motion.div>
       <SearchRepo repos={Repos?.data} setRepos={setRepos} />
