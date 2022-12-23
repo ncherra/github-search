@@ -1,5 +1,5 @@
-import { createTheme } from '@mui/material';
-import { text } from 'node:stream/consumers';
+import {createTheme} from '@mui/material';
+import {text} from 'node:stream/consumers';
 
 const theme = {
   /*   typography: {

@@ -74,7 +74,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
               ></meta>
             </Head>
-            {!inMobile && <Cursor />}
+            {/*             {!inMobile && <Cursor />} */}
             <Component {...pageProps} />
             <GlobalStyles styles={{ ...darkScrollbar() }} />
           </motion.div>
